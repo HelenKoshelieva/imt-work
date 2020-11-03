@@ -3,7 +3,7 @@ session_start () ;
 include "card.php" ;
 
 
-$_SESSION['cart']=['sum'=>0,'items'=>[]];
+//$_SESSION['cart']=['sum'=>0,'items'=>[]];
 $products = [
 2=>['name'=>'товар 1', 'price'=>2, 'id'=>1],
 7=>['name'=>'товар 2', 'price'=>7, 'id'=>2],
@@ -29,10 +29,19 @@ $products = [
 <p>Количество: <input type="text" name="quantity" /></p>
 
 <p><input type="submit" value="Отправить" </p>
+
+
+
 <?php 
+ if (isset($_GET['product'])){
+			$_SESSION['cart']['items'][]=add ($_GET['product'],$_GET['quantity'],$products[$_GET['product']]['price']);}
+else  {
+	var_dump($_SESSION['cart']);
+}
+
+?>
 
 
-$_SESSION['cart']=add ($_GET['product'],$_GET['quantity'],$products[$_GET['product']]['price']);?>
 
   </form>
 
@@ -43,3 +52,12 @@ $_SESSION['cart']=add ($_GET['product'],$_GET['quantity'],$products[$_GET['produ
 </body>
 </html>
 
+array(1) { ["items"]=> array(2) { 
+						[0]=> array(3) { 
+								["id"]=> string(2) "45" 
+								["quantity"]=> string(3) "500" 
+								["price"]=> int(45) } 
+						[1]=> array(3) { 
+								["id"]=> string(2) "46" 
+								["quantity"]=> string(3) "1.0" 
+								["price"]=> int(46) } } }
