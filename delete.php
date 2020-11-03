@@ -4,10 +4,10 @@ session_start () ;
 include "card.php"; 
 
 
-$ids=$_GET['ids'];
+$ids=$_GET[$productcardid];
 
 
-$cart['items']=delete($ids);
+$_SESSION['cart']['items']=delete($ids);
 
 
 
