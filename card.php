@@ -6,7 +6,7 @@ session_start () ;
 
   		
 function  add ($productid,$count,$price){
-$product=['id'=>$productid,'quantity'=>$count,'price'=>$price];
+$product['items'][$productid]=['id'=>$productid,'quantity'=>$count,'price'=>$price];
 return $product;
 }
 
