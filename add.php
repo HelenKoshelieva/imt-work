@@ -1,9 +1,11 @@
 <?php 
 session_start () ;
 include "card.php" ;
-
+//include "Product_class.php" ;
+include "Add_class.php" ;
 
 //$_SESSION['cart']=['sum'=>0,'items'=>[]];
+//$cart['items'][]=get_object_vars($card1);
 $products = [
 2=>['name'=>'товар 1', 'price'=>2, 'id'=>1],
 7=>['name'=>'товар 2', 'price'=>7, 'id'=>2],
@@ -31,14 +33,12 @@ $products = [
 <p><input type="submit" value="Отправить" </p>
 
 
-
 <?php 
- if (isset($_GET['product'])){
-			$_SESSION['cart']['items'][]=add ($_GET['product'],$_GET['quantity'],$products[$_GET['product']]['price']);}
-else  {
-	var_dump($_SESSION['cart']);
-}
-
+if (isset($_GET['product'])){
+					$_SESSION['cart']['items'][]=get_object_vars(new Card($_GET['product'],$_GET['quantity'],$products[$_GET['product']]['price']));
+					//$_SESSION['cart']['sum']= calc_sum($_SESSION['cart']['sum'],$_GET['product'],$_GET['quantity']);
+					var_dump($_SESSION['cart']);
+							}		
 ?>
 
 
@@ -52,12 +52,3 @@ else  {
 </body>
 </html>
 
-array(1) { ["items"]=> array(2) { 
-						[0]=> array(3) { 
-								["id"]=> string(2) "45" 
-								["quantity"]=> string(3) "500" 
-								["price"]=> int(45) } 
-						[1]=> array(3) { 
-								["id"]=> string(2) "46" 
-								["quantity"]=> string(3) "1.0" 
-								["price"]=> int(46) } } }
