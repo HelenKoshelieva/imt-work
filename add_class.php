@@ -9,6 +9,7 @@ class Card
 	public $count;
 	public $price;
 	public $sum;
+	public $discount=10;
 
 	public function __construct ($id,$count,$price)
 			{
@@ -27,6 +28,16 @@ class Card
 	//		{
 	//			echo 'Товар удален';
 	//		}
+	public	function  delete ($productid){
+
+	unset($_SESSION['cart']['items'][$productid]);
+	}
+
+	public function discount ($sum)
+			{
+				$sum=$sum-$discount;
+				return $sum;
+			}
 }
 
 

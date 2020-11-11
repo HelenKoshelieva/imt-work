@@ -1,11 +1,9 @@
 <?php 
 session_start () ;
 include "card.php" ;
-//include "Product_class.php" ;
+
 include "Add_class.php" ;
 
-//$_SESSION['cart']=['sum'=>0,'items'=>[]];
-//$cart['items'][]=get_object_vars($card1);
 $products = [
 2=>['name'=>'товар 1', 'price'=>2, 'id'=>1],
 7=>['name'=>'товар 2', 'price'=>7, 'id'=>2],
@@ -36,19 +34,10 @@ $products = [
 <?php 
 if (isset($_GET['product'])){
 					$_SESSION['cart']['items'][]=get_object_vars(new Card($_GET['product'],$_GET['quantity'],$products[$_GET['product']]['price']));
-					//$_SESSION['cart']['sum']= calc_sum($_SESSION['cart']['sum'],$_GET['product'],$_GET['quantity']);
-					var_dump($_SESSION['cart']);
-							}		
-?>
+}?>
+</form>
 
-
-
-  </form>
-
-
- <a href="/list.php">К корзине</a>
+<a href="/list.php">К корзине</a>
  
-<?php //при отправке формы добавляем товар в корзину в сессию с помощью вызова функции из файла cart.php ?>
-</body>
 </html>
 
